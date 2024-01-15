@@ -1,6 +1,6 @@
 <?php
 
-namespace NW\WebService\References\Operations\Return;
+namespace App\Return\Notification;
 
 class NotifyResult implements \JsonSerializable
 {

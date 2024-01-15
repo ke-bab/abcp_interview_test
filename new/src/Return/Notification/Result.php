@@ -1,8 +1,8 @@
 <?php
 
-namespace NW\WebService\References\Operations\Return;
+namespace App\Return\Notification;
 
-class ReturnResponse implements \JsonSerializable
+class Result implements \JsonSerializable
 {
     private NotifyResult $notificationEmployeeByEmail;
     private NotifyResult $notificationClientByEmail;
