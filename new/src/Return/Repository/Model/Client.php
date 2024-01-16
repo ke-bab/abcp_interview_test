@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Return\Repository;
+namespace App\Return\Repository\Model;
 
 class Client implements ContractorInterface
 {
@@ -19,5 +19,11 @@ class Client implements ContractorInterface
     public function getName(): string
     {
         // TODO: Implement getName() method.
+    }
+
+    // метод чисто для того что бы код работал и не выдавал ошибок. считаем что он выдает связь селлера (очень условно).
+    public function seller(): ContractorInterface
+    {
+        return new Reseller();
     }
 }

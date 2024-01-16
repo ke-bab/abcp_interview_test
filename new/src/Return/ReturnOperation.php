@@ -2,10 +2,10 @@
 
 namespace App\Return;
 
+use App\Return\Notification\Dto\Result;
+use App\Return\Notification\Dto\TemplateData;
 use App\Return\Notification\NotificatorInterface;
-use App\Return\Notification\Result;
-use App\Return\Notification\TemplateData;
-use App\Return\Repository\ContractorInterface;
+use App\Return\Repository\Model\ContractorInterface;
 use App\Return\Repository\RepositoryInterface;
 
 class ReturnOperation

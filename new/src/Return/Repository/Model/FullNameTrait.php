@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Return\Repository;
+namespace App\Return\Repository\Model;
 
 trait FullNameTrait
 {

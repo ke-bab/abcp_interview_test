@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Return\Notification;
+namespace App\Return\Notification\Dto;
 
-use App\Return\Repository\Client;
-use App\Return\Repository\Creator;
-use App\Return\Repository\Expert;
+use App\Return\Notification\Mail\MailInterface;
+use App\Return\Repository\Model\Client;
+use App\Return\Repository\Model\Creator;
+use App\Return\Repository\Model\Expert;
 use App\Return\Request;
+use function App\Return\Notification\__;
 
 class TemplateData
 {
     public const TYPE_NEW    = 1;
     public const TYPE_CHANGE = 2;
-
-    public const TEMPLATE_NEW_POSITION = 'NewPositionAdded';
-    public const TEMPLATE_STATUS_CHANGED = 'PositionStatusHasChanged';
 
     public const STATUS_COMPLETED = 'Completed';
     public const STATUS_PENDING = 'Pending';
@@ -58,16 +57,16 @@ class TemplateData
     }
 
     public function __construct(
-        int                            $complaintId,
-        string                         $complaintNumber,
-        \App\Return\Repository\Creator $creator,
-        \App\Return\Repository\Expert  $expert,
-        \App\Return\Repository\Client  $client,
-        int                            $consId,
-        string                         $consNumber,
-        string                         $agreementNumber,
-        string                         $date,
-        string                         $diff
+        int                                  $complaintId,
+        string                               $complaintNumber,
+        \App\Return\Repository\Model\Creator $creator,
+        \App\Return\Repository\Model\Expert  $expert,
+        \App\Return\Repository\Model\Client  $client,
+        int                                  $consId,
+        string                               $consNumber,
+        string                               $agreementNumber,
+        string                               $date,
+        string                               $diff
     )
     {
         $this->complaintId = $complaintId;
@@ -105,10 +104,10 @@ class TemplateData
     {
         $diff = '';
         if ($request->notificationType === self::TYPE_NEW) {
-            $diff = __(self::TEMPLATE_NEW_POSITION, null, $request->resellerId);
+            $diff = __(MailInterface::TEMPLATE_NEW_POSITION, null, $request->resellerId);
         }
         if ($request->notificationType === self::TYPE_CHANGE) {
-            $diff = __(self::TEMPLATE_STATUS_CHANGED, [
+            $diff = __(MailInterface::TEMPLATE_STATUS_CHANGED, [
                 'FROM' => self::STATUS_MAP[$request->statusFrom],
                 'TO'   => self::STATUS_MAP[$request->statusTo],
             ], $request->resellerId);

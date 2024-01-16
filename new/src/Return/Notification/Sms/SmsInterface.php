@@ -2,9 +2,10 @@
 
 namespace App\Return\Notification\Sms;
 
-use App\Return\Notification\MetaData;
+use App\Return\Notification\Dto\MetaData;
+use App\Return\Notification\Dto\TemplateData;
 
 interface SmsInterface
 {
-    public function send(SmsData $data, MetaData $metadata);
+    public function send(string $mobile, TemplateData $data, MetaData $metadata);
 }

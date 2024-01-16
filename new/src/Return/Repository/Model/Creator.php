@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Return\Repository;
+namespace App\Return\Repository\Model;
 
-class Expert implements ContractorInterface
+class Creator implements ContractorInterface
 {
     use FullNameTrait;
 
