@@ -4,6 +4,7 @@ namespace App\Return;
 
 use App\Return\Notification\Dto\Result;
 use App\Return\Notification\Dto\TemplateData;
+use App\Return\Notification\Events;
 use App\Return\Notification\NotificatorInterface;
 use App\Return\Repository\Model\ContractorInterface;
 use App\Return\Repository\RepositoryInterface;
@@ -36,6 +37,12 @@ class ReturnOperation
         // создать templateData объект
         $template = TemplateData::newFromRequest($request, $creator, $expert, $client);
         // бросить templateData в сервис уведомлений
-        return $this->notificator->send($template);
+        return $this->notificator->send(
+            $template,
+            $reseller,
+            $client,
+            $request->notificationType === NotificatorInterface::TYPE_CHANGE ? Events::CHANGE_RETURN_STATUS : Events::NEW_RETURN_STATUS,
+            $request->statusTo
+        );
     }
 }

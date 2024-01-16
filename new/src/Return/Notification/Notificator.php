@@ -10,6 +10,7 @@ use App\Return\Notification\Mail\MailInterface;
 use App\Return\Notification\Sms\SmsInterface;
 use App\Return\Repository\Model\Client;
 use App\Return\Repository\Model\Reseller;
+use App\Return\Template\Template;
 
 class Notificator implements NotificatorInterface
 {
@@ -86,8 +87,8 @@ class Notificator implements NotificatorInterface
                     new MailData(
                         $resellerEmail,
                         $email,
-                        __(MailInterface::TEMPLATE_COMPLAINT_EMPLOYEE_EMAIL_SUBJECT, $templateData, $reseller->getId()),
-                        __(MailInterface::TEMPLATE_COMPLAINT_EMPLOYEE_EMAIL_BODY, $templateData, $reseller->getId())
+                        Template::__(MailInterface::TEMPLATE_COMPLAINT_EMPLOYEE_EMAIL_SUBJECT, $templateData->getData(), $reseller->getId()),
+                        Template::__(MailInterface::TEMPLATE_COMPLAINT_EMPLOYEE_EMAIL_BODY, $templateData->getData(), $reseller->getId())
                     ),
                     $metadata
                 );
@@ -119,8 +120,8 @@ class Notificator implements NotificatorInterface
                 $this->mail->send(new MailData(
                     $resellerEmail,
                     $clientEmail,
-                    __(MailInterface::TEMPLATE_COMPLAINT_CLIENT_EMAIL_SUBJECT, $templateData, $reseller->getId()),
-                    __(MailInterface::TEMPLATE_COMPLAINT_CLIENT_EMAIL_BODY, $templateData, $reseller->getId())
+                    Template::__(MailInterface::TEMPLATE_COMPLAINT_CLIENT_EMAIL_SUBJECT, $templateData->getData(), $reseller->getId()),
+                    Template::__(MailInterface::TEMPLATE_COMPLAINT_CLIENT_EMAIL_BODY, $templateData->getData(), $reseller->getId())
                 ), $metadata);
                 $result->setClientByEmailSuccess();
             } catch (\Exception $e) {

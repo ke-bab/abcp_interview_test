@@ -19,6 +19,16 @@ class NotifyResult implements \JsonSerializable
         $this->error = $error;
     }
 
+    public function isSent(): bool
+    {
+        return $this->isSent;
+    }
+
+    public function getError(): ?string
+    {
+        return $this->error;
+    }
+
     public function jsonSerialize(): array
     {
         return [

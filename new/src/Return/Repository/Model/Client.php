@@ -8,17 +8,17 @@ class Client implements ContractorInterface
 
     public function getId(): int
     {
-        // TODO: Implement getId() method.
+        return 123;
     }
 
     public function getType(): int
     {
-        // TODO: Implement getType() method.
+        return ContractorInterface::TYPE_CUSTOMER;
     }
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return "Mike";
     }
 
     // метод чисто для того что бы код работал и не выдавал ошибок. считаем что он выдает связь селлера (очень условно).

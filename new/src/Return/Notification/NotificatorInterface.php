@@ -9,10 +9,14 @@ use App\Return\Repository\Model\Reseller;
 
 interface NotificatorInterface
 {
+    public const TYPE_NEW    = 1;
+    public const TYPE_CHANGE = 2;
+
     public function send(
         TemplateData $templateData,
         Reseller     $reseller,
         Client       $client,
         string       $event,
-        ?int         $statusTo): Result;
+        ?int         $statusTo
+    ): Result;
 }

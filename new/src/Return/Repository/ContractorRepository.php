@@ -15,22 +15,22 @@ use App\Return\Repository\Model\Reseller;
  */
 class ContractorRepository implements RepositoryInterface
 {
-    public function findClient(int $id): ?ContractorInterface
+    public function findClient(int $id): ?Client
     {
         return new Client();
     }
 
-    public function findCreator(int $id): ?ContractorInterface
+    public function findCreator(int $id): ?Creator
     {
         return new Creator();
     }
 
-    public function findSeller(int $id): ?ContractorInterface
+    public function findSeller(int $id): ?Reseller
     {
         return new Reseller();
     }
 
-    public function findExpert(int $id): ?ContractorInterface
+    public function findExpert(int $id): ?Expert
     {
         return new Expert();
     }

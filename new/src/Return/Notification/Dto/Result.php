@@ -49,6 +49,21 @@ class Result implements \JsonSerializable
         $this->notificationClientBySms->setFailure($error);
     }
 
+    public function getNotificationEmployeeByEmail(): NotifyResult
+    {
+        return $this->notificationEmployeeByEmail;
+    }
+
+    public function getNotificationClientByEmail(): NotifyResult
+    {
+        return $this->notificationClientByEmail;
+    }
+
+    public function getNotificationClientBySms(): NotifyResult
+    {
+        return $this->notificationClientBySms;
+    }
+
     public function jsonSerialize(): array
     {
         return [

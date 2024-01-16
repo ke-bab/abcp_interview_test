@@ -3,26 +3,17 @@
 namespace App\Return\Notification\Dto;
 
 use App\Return\Notification\Mail\MailInterface;
+use App\Return\Notification\NotificatorInterface;
 use App\Return\Repository\Model\Client;
 use App\Return\Repository\Model\Creator;
 use App\Return\Repository\Model\Expert;
 use App\Return\Request;
+use App\Return\Status;
+use App\Return\Template\Template;
 use function App\Return\Notification\__;
 
 class TemplateData
 {
-    public const TYPE_NEW    = 1;
-    public const TYPE_CHANGE = 2;
-
-    public const STATUS_COMPLETED = 'Completed';
-    public const STATUS_PENDING = 'Pending';
-    public const STATUS_REJECTED = 'Rejected';
-
-    public const STATUS_MAP = [
-        0 => self::STATUS_COMPLETED,
-        1 => self::STATUS_PENDING,
-        2 => self::STATUS_REJECTED,
-    ];
 
     private int $complaintId;
     private string $complaintNumber;
@@ -103,13 +94,13 @@ class TemplateData
     private static function getDiff(Request $request): string
     {
         $diff = '';
-        if ($request->notificationType === self::TYPE_NEW) {
-            $diff = __(MailInterface::TEMPLATE_NEW_POSITION, null, $request->resellerId);
+        if ($request->notificationType === NotificatorInterface::TYPE_NEW) {
+            $diff = Template::__(MailInterface::TEMPLATE_NEW_POSITION, null, $request->resellerId);
         }
-        if ($request->notificationType === self::TYPE_CHANGE) {
-            $diff = __(MailInterface::TEMPLATE_STATUS_CHANGED, [
-                'FROM' => self::STATUS_MAP[$request->statusFrom],
-                'TO'   => self::STATUS_MAP[$request->statusTo],
+        if ($request->notificationType === NotificatorInterface::TYPE_CHANGE) {
+            $diff = Template::__(MailInterface::TEMPLATE_STATUS_CHANGED, [
+                'FROM' => Status::MAP[$request->statusFrom],
+                'TO'   => Status::MAP[$request->statusTo],
             ], $request->resellerId);
         }
 

@@ -8,16 +8,16 @@ class Expert implements ContractorInterface
 
     public function getId(): int
     {
-        // TODO: Implement getId() method.
+        return 122;
     }
 
     public function getType(): int
     {
-        // TODO: Implement getType() method.
+        return 3;
     }
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return "Олег";
     }
 }

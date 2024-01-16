@@ -8,16 +8,16 @@ class Creator implements ContractorInterface
 
     public function getId(): int
     {
-        // TODO: Implement getId() method.
+        return 111;
     }
 
     public function getType(): int
     {
-        // TODO: Implement getType() method.
+        return 2;
     }
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return "John";
     }
 }

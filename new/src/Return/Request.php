@@ -96,7 +96,7 @@ class Request
     /**
      * @throws \Exception
      */
-    public static function validateString(string $name, string $value): int
+    public static function validateString(string $name, string $value): string
     {
         if (empty($value)) {
             throw new \Exception("$name is empty");
