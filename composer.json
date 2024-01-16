@@ -15,5 +15,10 @@
             "name": "Makarenkov Aleksandr",
             "email": "aarenaarenson@gmail.com"
         }
-    ]
+    ],
+    "config": {
+        "platform": {
+            "php": "8.0"
+        }
+    }
 }
