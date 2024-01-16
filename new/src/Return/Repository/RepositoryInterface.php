@@ -7,6 +7,10 @@ use App\Return\Repository\Model\Creator;
 use App\Return\Repository\Model\Expert;
 use App\Return\Repository\Model\Reseller;
 
+/**
+ * Подразумевается что репозиторий также можно мокнуть в тестах и подменить, но у нас и стандартная
+ * имплементация возвращает заглушки так что можнои  не мокать.
+ */
 interface RepositoryInterface
 {
     public function findClient(int $id): ?Client;

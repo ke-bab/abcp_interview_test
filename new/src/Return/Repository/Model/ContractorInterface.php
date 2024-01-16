@@ -2,6 +2,9 @@
 
 namespace App\Return\Repository\Model;
 
+/**
+ *
+ */
 interface ContractorInterface
 {
     const TYPE_CUSTOMER = 0;
